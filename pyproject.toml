@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "mlops end to end project"
+version = "0.1.0"
+description = "This project is about the end to end project of MLOps."
+authors = ["dhirajpoddar <dhirajpodar@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+[tool.poetry.group.dev.dependencies]
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
