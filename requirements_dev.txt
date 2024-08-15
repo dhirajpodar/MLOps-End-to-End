@@ -1,3 +1,8 @@
 flake8
 pytest
 mypy
+flask
+mlflow
+dvc
+ipykernel
+xgboost
