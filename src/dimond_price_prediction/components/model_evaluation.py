@@ -1,14 +1,14 @@
 """This file will train the models."""
 import numpy as np
-from DimondPricePrediction.logger.logging import logging
-from DimondPricePrediction.exception.exception import CustomException
+from dimond_price_prediction.logger.logging import logging
+from dimond_price_prediction.exception.exception import CustomException
 
 import os 
 import sys
 from pathlib import Path
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
 
-from DimondPricePrediction.utils.utils import load_object
+from src.dimond_price_prediction.utils.utils import load_object
 
 class Evaluator:
     def __init__(self):
@@ -18,7 +18,10 @@ class Evaluator:
         rmse = np.sqrt(mean_squared_error(actual, pred))
         mae = mean_absolute_error(actual,pred)
         r2 = r2_score(actual,pred)
-
+        print('Model Training Performance')
+        print('RMSE:',rmse)
+        print('MAE:',mae)
+        print('R2:',r2)
         return rmse, mae, r2
 
     def initate_model_evaluation(self, test_array):

@@ -1,11 +1,12 @@
 """This file will train the models."""
-from DimondPricePrediction.logger.logging import logging
-from DimondPricePrediction.exception.exception import CustomException
+from webbrowser import get
+from dimond_price_prediction.logger.logging import logging
+from dimond_price_prediction.exception.exception import CustomException
 
 import os 
 from dataclasses import dataclass
-from DimondPricePrediction.utils.utils import save_object
-from DimondPricePrediction.utils.utils import evaluate_model
+from src.dimond_price_prediction.utils.utils import save_object
+from src.dimond_price_prediction.components.model_evaluation import Evaluator
 
 from sklearn.linear_model import LinearRegression, Ridge, Lasso, ElasticNet
 
@@ -20,7 +21,7 @@ class Trainer:
 
     def initate_data_training(self, train_array, test_array):
         X_train, y_train, X_test, y_test = (
-            train_array[:,:,-1],
+            train_array[:,:-1],
             train_array[:,-1],
             test_array[:,:,-1],
             test_array[:,-1],
@@ -33,16 +34,15 @@ class Trainer:
             'Elasticnet':ElasticNet()
         }
 
-        model_report:dict = evaluate_model(X_train,y_train,X_test,y_test,models)
-        print(model_report)
-        print('\n==========')
-        logging.info(f"Model report::{model_report}")
-
-        best_model_score = max(sorted(model_report.values()))
-
-        best_model_name = list(model_report.keys())[
-            list(model_report.values()).index(best_model_score)
-        ]
+        scores = {}
+        evaluator = Evaluator()
+        for i in range(list(models)):
+            model_name, model = list(models.items())[i]
+            model.fit(X_train,y_train)
+            y_pred = model.predict(X_test)
+            scores[model_name] = evaluator.eval_metrics(y_test,y_pred)
+       
+        best_model_name= max(scores,key=get)
 
         best_model = models[best_model_name]
 

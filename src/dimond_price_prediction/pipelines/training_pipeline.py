@@ -1,11 +1,11 @@
-from src.DimondPricePrediction.components.data_ingestion import DataIngestion
-from src.DimondPricePrediction.components.data_transformation import DataTransformation
-from src.DimondPricePrediction.components.model_evaluation import Evaluator
-from src.DimondPricePrediction.components.model_trainer import Trainer
+from src.dimond_price_prediction.components.data_ingestion import DataIngestion
+from src.dimond_price_prediction.components.data_transformation import DataTransformation
+from src.dimond_price_prediction.components.model_evaluation import Evaluator
+from src.dimond_price_prediction.components.model_trainer import Trainer
 
 import os
-from src.DimondPricePrediction.logger.logging import logging
-from src.DimondPricePrediction.exception.exception import CustomException
+from src.dimond_price_prediction.logger.logging import logging
+from src.dimond_price_prediction.exception.exception import CustomException
 
 class TrainingPipeline:
     """Train pipeline."""

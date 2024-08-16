@@ -2,8 +2,8 @@ from operator import index
 from textwrap import indent
 import pandas as pd
 import numpy as np
-from DimondPricePrediction.logger.logging import logging
-from DimondPricePrediction.exception.exception import CustomException
+from src.dimond_price_prediction.logger.logging import logging
+from src.dimond_price_prediction.exception.exception import CustomException
 
 import os 
 import sys

@@ -1,6 +1,6 @@
 from sklearn.metrics import r2_score, mean_absolute_error, mean_squared_error
 
-from DimondPricePrediction.exception.exception import CustomException
+from src.dimond_price_prediction.exception.exception import CustomException
 import sys
 import os
 import pickle
