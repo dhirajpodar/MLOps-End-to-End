@@ -44,10 +44,10 @@ class Trainer:
             print(f"Model::{model_name}")
             _,_,r2 = evaluator.eval_metrics(y_test,y_pred)
             scores[model_name] = r2
-
+        evaluator.save_model_evaluation_metrics(test_array)
         best_model_name= max(scores,key=scores.get)
-
         best_model = models[best_model_name]
+
         print(f"Best Model:::{best_model_name}")
 
         save_object(
