@@ -1,7 +1,7 @@
 """This file will train the models."""
 import numpy as np
-from dimond_price_prediction.logger.logging import logging
-from dimond_price_prediction.exception.exception import CustomException
+from src.dimond_price_prediction.logger.logging import logging
+from src.dimond_price_prediction.exception.exception import CustomException
 
 import os 
 import sys
@@ -22,6 +22,7 @@ class Evaluator:
         print('RMSE:',rmse)
         print('MAE:',mae)
         print('R2:',r2)
+        print('\n=======================')
         return rmse, mae, r2
 
     def initate_model_evaluation(self, test_array):
